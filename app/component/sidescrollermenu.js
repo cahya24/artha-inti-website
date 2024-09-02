@@ -39,38 +39,50 @@ const items = [
 export default function SidescrollerMenu() {
   const scrollContainerRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [autoScroll, setAutoScroll] = useState(true);
+  const autoScrollIntervalRef = useRef(null);
 
   // Function to scroll to a specific index
   const scrollToIndex = (index) => {
     if (scrollContainerRef.current) {
-      const scrollAmount = index * window.innerWidth; // Calculate scroll amount based on index
+      const scrollAmount = index * (scrollContainerRef.current.scrollWidth / items.length);
       scrollContainerRef.current.scrollTo({
         left: scrollAmount,
         behavior: "smooth",
       });
       setCurrentIndex(index);
-      setAutoScroll(false); // Stop auto scroll when dot is pressed
     }
   };
 
-  // Automatically scroll every 5 seconds if autoScroll is true
-  useEffect(() => {
-    if (autoScroll) {
-      const interval = setInterval(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
-      }, 5000); // 5000 milliseconds = 5 seconds
-      return () => clearInterval(interval); // Cleanup interval on component unmount
-    }
-  }, [autoScroll]);
+  // Function to start auto-scroll
+  const startAutoScroll = () => {
+    stopAutoScroll(); // Ensure no previous interval is running
+    autoScrollIntervalRef.current = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
+    }, 5000); // 5000 milliseconds = 5 seconds
+  };
 
-  // Reset auto scroll timer when dot is pressed
+  // Function to stop auto-scroll
+  const stopAutoScroll = () => {
+    if (autoScrollIntervalRef.current) {
+      clearInterval(autoScrollIntervalRef.current);
+      autoScrollIntervalRef.current = null;
+    }
+  };
+
+  // Start auto-scroll on component mount
+  useEffect(() => {
+    startAutoScroll();
+
+    return () => stopAutoScroll(); // Cleanup interval on component unmount
+  }, []);
+
+  // Update scroll position whenever currentIndex changes
   useEffect(() => {
     scrollToIndex(currentIndex);
   }, [currentIndex]);
 
   return (
-    <div className="relative py-4 flex flex-col items-center justify-center mt-20 bg-gradient-to-r from-blue-100 to-white overflow-hidden">
+    <div className="relative pt-12 pb-24 flex flex-col items-center justify-center bg-gradient-to-r from-blue-100 to-white overflow-hidden">
       {/* Sliced Off Effect at Bottom */}
       <div className="absolute bottom-0 w-full h-32 bg-white rounded-t-full transform translate-y-1/2"></div>
 
@@ -105,14 +117,18 @@ export default function SidescrollerMenu() {
       </div>
 
       {/* Indicator Dots */}
-      <div className="flex mt-4 space-x-2">
+      <div className="flex pt-8 mt-4 space-x-2">
         {items.map((_, index) => (
           <button
             key={index}
             className={`w-4 h-4 rounded-full ${
               currentIndex === index ? "bg-blue-500" : "bg-blue-300"
             }`}
-            onClick={() => scrollToIndex(index)}
+            onClick={() => {
+              stopAutoScroll(); // Stop auto-scroll when dot is clicked
+              scrollToIndex(index); // Scroll to the clicked dot
+              startAutoScroll(); // Restart auto-scroll
+            }}
           ></button>
         ))}
       </div>
