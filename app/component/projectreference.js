@@ -52,7 +52,7 @@ export default function ProjectReference() {
   };
 
   return (
-    <div className="relative bg-gray-800 pt-24 pb-16">
+    <div className="relative bg-gray-800 pt-24 pb-36">
       {/* Sliced Off Effect at Top */}
       <div className="absolute top-0 left-0 right-0 w-full h-32 bg-white rounded-b-[50%] transform -translate-y-16"></div>
       <h2 className="text-white text-2xl text-center mb-6">Project References</h2>
