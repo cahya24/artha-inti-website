@@ -2,7 +2,6 @@
 
 import React, { useRef, useState, useEffect } from "react";
 
-// Updated items array to include images and descriptions
 const items = [
   {
     id: 1,
@@ -41,7 +40,6 @@ export default function SidescrollerMenu() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const autoScrollIntervalRef = useRef(null);
 
-  // Function to scroll to a specific index
   const scrollToIndex = (index) => {
     if (scrollContainerRef.current) {
       const scrollAmount = index * (scrollContainerRef.current.scrollWidth / items.length);
@@ -53,15 +51,13 @@ export default function SidescrollerMenu() {
     }
   };
 
-  // Function to start auto-scroll
   const startAutoScroll = () => {
-    stopAutoScroll(); // Ensure no previous interval is running
+    stopAutoScroll();
     autoScrollIntervalRef.current = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
-    }, 5000); // 5000 milliseconds = 5 seconds
+    }, 5000);
   };
 
-  // Function to stop auto-scroll
   const stopAutoScroll = () => {
     if (autoScrollIntervalRef.current) {
       clearInterval(autoScrollIntervalRef.current);
@@ -69,14 +65,11 @@ export default function SidescrollerMenu() {
     }
   };
 
-  // Start auto-scroll on component mount
   useEffect(() => {
     startAutoScroll();
-
-    return () => stopAutoScroll(); // Cleanup interval on component unmount
+    return () => stopAutoScroll();
   }, []);
 
-  // Update scroll position whenever currentIndex changes
   useEffect(() => {
     scrollToIndex(currentIndex);
   }, [currentIndex]);
@@ -84,32 +77,22 @@ export default function SidescrollerMenu() {
   return (
     <div className="relative pt-12 pb-24 flex flex-col items-center justify-center bg-gradient-to-r from-blue-100 to-white overflow-hidden">
       {/* Sliced Off Effect at Bottom */}
-      <div className="absolute bottom-0 w-full h-32 bg-white rounded-t-full transform translate-y-1/2"></div>
+      <div className="absolute bottom-0 left-0 right-0 w-full h-32 bg-white rounded-t-[50%] transform translate-y-16"></div>
 
       {/* Sidescroller Container */}
-      <div
-        className="overflow-hidden w-full max-w-4xl"
-        ref={scrollContainerRef}
-      >
+      <div className="overflow-hidden w-full max-w-4xl" ref={scrollContainerRef}>
         <div className="flex space-x-0 w-full">
           {items.map((item, index) => (
-            <div
-              key={item.id}
-              className="flex-none flex w-full h-96 items-center justify-center mx-4"
-            >
-              {/* Image on the Left with Fixed Size */}
+            <div key={item.id} className="flex-none flex w-full h-96 items-center justify-center mx-4">
               <div className="flex-none w-1/5 h-full">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-full h-full object-cover"
-                  style={{ width: "100%", height: "100%" }}
-                />
+                <img src={item.image} alt={item.name} className="w-full h-full object-cover rounded-lg" style={{ width: "100%", height: "100%" }} />
               </div>
-              {/* Description on the Right */}
               <div className="flex-grow p-4 w-4/5">
                 <h3 className="text-2xl font-bold text-gray-800">{item.name}</h3>
-                <p className="text-base text-gray-600">{item.description}</p>
+                <p className="text-base text-gray-600 mb-4">{item.description}</p>
+                <button className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all duration-300 ease-in-out">
+                  Learn More
+                </button>
               </div>
             </div>
           ))}
@@ -121,13 +104,11 @@ export default function SidescrollerMenu() {
         {items.map((_, index) => (
           <button
             key={index}
-            className={`w-4 h-4 rounded-full ${
-              currentIndex === index ? "bg-blue-500" : "bg-blue-300"
-            }`}
+            className={`w-4 h-4 rounded-full ${currentIndex === index ? "bg-blue-500" : "bg-blue-300"}`}
             onClick={() => {
-              stopAutoScroll(); // Stop auto-scroll when dot is clicked
-              scrollToIndex(index); // Scroll to the clicked dot
-              startAutoScroll(); // Restart auto-scroll
+              stopAutoScroll();
+              scrollToIndex(index);
+              startAutoScroll();
             }}
           ></button>
         ))}

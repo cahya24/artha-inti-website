@@ -13,3 +13,50 @@ body {
   font-family: 'Inter', sans-serif; /* Replace with MCPUR's font if needed */
   background-color: #f8f9fa; /* Light background similar to MCPUR */
 }
+
+.projectreference-container {
+  position: relative;
+  padding: 2rem 1rem;
+  background-color: #2d2d2d;
+}
+
+.projectreference-container h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: white;
+}
+
+.project-item {
+  position: relative;
+  flex: 0 0 25%;
+  margin-right: 1rem;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.project-item img {
+  width: 329px;
+  height: 216px;
+  object-fit: contain;
+  border-radius: 0.5rem;
+}
+
+.project-item .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.25rem;
+  transition: opacity 0.3s ease;
+}
+
+.project-item:hover .overlay {
+  opacity: 1;
+}
