@@ -29,7 +29,7 @@ const contentBoxes = [
 
 export default function ContentBoxSection() {
   return (
-    <div className="py-8 bg-white w-full flex flex-col items-center">
+    <div className="py-32 bg-white w-full flex flex-col items-center">
       {/* Grid Container for Content Boxes */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl px-4">
         {contentBoxes.map((box, index) => (

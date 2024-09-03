@@ -84,7 +84,7 @@ export default function SidescrollerMenu() {
         <div className="flex space-x-0 w-full">
           {items.map((item, index) => (
             <div key={item.id} className="flex-none flex w-full h-96 items-center justify-center mx-4">
-              <div className="flex-none w-1/5 h-full">
+              <div className="flex-none w-2/5 h-full">
                 <img src={item.image} alt={item.name} className="w-full h-full object-cover rounded-lg" style={{ width: "100%", height: "100%" }} />
               </div>
               <div className="flex-grow p-4 w-4/5">
