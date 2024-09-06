@@ -105,6 +105,8 @@ export default function ProjectReference() {
           &gt;
         </button>
       </div>
+      {/* Sliced Off Effect at Bottom */}
+      <div className="absolute bottom-0 left-0 right-0 w-full h-32 bg-white rounded-t-[50%] transform translate-y-16"></div>
     </div>
   );
 }
