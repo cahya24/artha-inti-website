@@ -23,56 +23,56 @@ export default function TextContent2() {
             {/* Adjust sizes for different logos */}
             <div className="flex items-center justify-center bg-white p-4 rounded-lg">
               <img
-                src="/Brand-Alfa-Laval.jpg"
+                src="Brand-Alfa-Laval.jpg"
                 alt="Alfa Laval"
                 className="h-18 w-auto object-contain"
               />
             </div>
             <div className="flex items-center justify-center bg-white p-4 rounded-lg">
               <img
-                src="/Brand-Aquafine.jpg"
+                src="Brand-Aquafine.jpg"
                 alt="Aquafine"
                 className="h-16 w-auto object-contain"
               />
             </div>
             <div className="flex items-center justify-center bg-white p-4 rounded-lg">
               <img
-                src="/Brand-Calgon.jpg"
+                src="Brand-Calgon.jpg"
                 alt="Calgon"
                 className="h-16 w-auto object-contain"
               />
             </div>
             <div className="flex items-center justify-center bg-white p-4 rounded-lg">
               <img
-                src="/Brand-ecellGE3.jpg"
+                src="Brand-ecellGE3.jpg"
                 alt="ecellGE3"
                 className="h-16 w-auto object-contain"
               />
             </div>
             <div className="flex items-center justify-center bg-white p-4 rounded-lg">
               <img
-                src="/Brand-gemu.jpg"
+                src="Brand-gemu.jpg"
                 alt="gemu"
                 className="h-16 w-auto object-contain"
               />
             </div>
             <div className="flex items-center justify-center bg-white p-4 rounded-lg">
               <img
-                src="/Brand-ionpure.jpg"
+                src="Brand-ionpure.jpg"
                 alt="ionpure"
                 className="h-16 w-auto object-contain"
               />
             </div>
             <div className="flex items-center justify-center bg-white p-4 rounded-lg">
               <img
-                src="/Brand-Overton.jpg"
+                src="Brand-Overton.jpg"
                 alt="Overton"
                 className="h-16 w-auto object-contain"
               />
             </div>
             <div className="flex items-center justify-center bg-white p-4 rounded-lg">
               <img
-                src="/Brand-ozonia.jpg"
+                src="Brand-ozonia.jpg"
                 alt="ozonia"
                 className="h-16 w-auto object-contain"
               />

@@ -9,12 +9,12 @@ export default function TextContent1() {
         {/* Image Section */}
         <div className="w-1/2 p-4">
           <img
-            src="/Cooling-Tower-Water-Treatment-Indonesia.jpg" // Update with your image path
+            src="Cooling-Tower-Water-Treatment-Indonesia.jpg" // Update with your image path
             alt="Water Treatment"
             className="w-full h-96 rounded-lg object-contain"
           />
           <img
-            src="/RO-Membrane-Cleaning-Indonesia.jpg" // Update with your image path
+            src="RO-Membrane-Cleaning-Indonesia.jpg" // Update with your image path
             alt="Water Treatment"
             className="w-full h-96 rounded-lg object-contain"
           />
