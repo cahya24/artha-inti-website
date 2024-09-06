@@ -20,7 +20,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ease-in-out bg-white shadow-md ${
+      className={`sticky top-0 z-50 transition-all duration-300 ease-in-out bg-darkSecondary shadow-md ${
         isScrolled ? "py-2" : "py-4"
       }`}
     >

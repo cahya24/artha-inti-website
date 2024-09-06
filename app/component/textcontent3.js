@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function TextContent3() {
   return (
-    <div className="bg-blue-100 py-12 flex flex-col items-center justify-center px-6">
+    <div className="bg-secondary py-24 flex flex-col items-center justify-center px-6">
       <div className="max-w-4xl text-center">
         {/* Headline Title */}
         <h2 className="text-3xl font-bold text-blue-900 mb-6">Our Goal is to Solve Your Problem!</h2>

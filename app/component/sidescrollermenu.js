@@ -75,9 +75,9 @@ export default function SidescrollerMenu() {
   }, [currentIndex]);
 
   return (
-    <div className="relative pt-12 pb-24 flex flex-col items-center justify-center bg-gradient-to-r from-blue-100 to-white overflow-hidden">
+    <div className="relative pt-12 pb-24 flex flex-col items-center justify-center bg-primary from-blue-100 to-white overflow-hidden">
       {/* Sliced Off Effect at Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 w-full h-32 bg-white rounded-t-[50%] transform translate-y-16"></div>
+      <div className="absolute bottom-0 left-0 right-0 w-full h-32 bg-secondary rounded-t-[50%] transform translate-y-16"></div>
 
       {/* Sidescroller Container */}
       <div className="overflow-hidden w-full max-w-4xl" ref={scrollContainerRef}>
@@ -88,9 +88,9 @@ export default function SidescrollerMenu() {
                 <img src={item.image} alt={item.name} className="w-full h-full object-cover rounded-lg" style={{ width: "100%", height: "100%" }} />
               </div>
               <div className="flex-grow p-4 w-4/5">
-                <h3 className="text-2xl font-bold text-gray-800">{item.name}</h3>
-                <p className="text-base text-gray-600 mb-4">{item.description}</p>
-                <button className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all duration-300 ease-in-out">
+                <h3 className="text-2xl font-bold text-darkPrimary">{item.name}</h3>
+                <p className="text-base text-darkPrimary mb-4">{item.description}</p>
+                <button className="px-4 py-2 bg-darkPrimary text-white rounded-lg hover:bg-darkSecondary transition-all duration-300 ease-in-out">
                   Learn More
                 </button>
               </div>
@@ -104,7 +104,7 @@ export default function SidescrollerMenu() {
         {items.map((_, index) => (
           <button
             key={index}
-            className={`w-4 h-4 rounded-full ${currentIndex === index ? "bg-blue-500" : "bg-blue-300"}`}
+            className={`w-4 h-4 rounded-full ${currentIndex === index ? "bg-darkPrimary" : "bg-darkSecondary"}`}
             onClick={() => {
               stopAutoScroll();
               scrollToIndex(index);

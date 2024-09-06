@@ -4,8 +4,8 @@ import React from 'react';
 
 export default function TextContent1() {
   return (
-    <div className="min-h-fit bg-white flex items-center justify-center p-16">
-      <div className="flex max-w-3xl w-full bg-gray-100 rounded-lg shadow-lg">
+    <div className="min-h-fit bg-secondary flex items-center justify-center p-16">
+      <div className="flex max-w-3xl w-full bg-primary rounded-3xl shadow-lg">
         {/* Image Section */}
         <div className="w-1/2 p-4">
           <img

@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
         <TextContent2 />
         <TextContent3 />
         <main className="container mx-auto">{children}</main>
-        <footer className="p-6 bg-gray-800 text-white text-center">
+        <footer className="p-6 bg-primary text-black text-center">
           <p>&copy; 2024 PT Artha Inti Manunggal. All rights reserved.</p>
         </footer>
       </body>

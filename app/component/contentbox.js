@@ -29,13 +29,13 @@ const contentBoxes = [
 
 export default function ContentBoxSection() {
   return (
-    <div className="py-32 bg-white w-full flex flex-col items-center">
+    <div className="py-32 bg-secondary w-full flex flex-col items-center">
       {/* Grid Container for Content Boxes */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl px-4">
         {contentBoxes.map((box, index) => (
           <div
             key={box.id}
-            className={`relative flex flex-col items-center bg-gray-100 p-6 rounded-lg shadow-lg transition-transform transform hover:-translate-y-${
+            className={`relative flex flex-col items-center bg-primary p-6 rounded-lg shadow-lg transition-transform transform hover:-translate-y-${
               index === 0 ? '1' : index === 1 ? '3' : '2'
             } hover:scale-105 hover:shadow-xl`}
           >
@@ -50,11 +50,11 @@ export default function ContentBoxSection() {
 
             {/* Text Section */}
             <div className="mt-4 text-center">
-              <h2 className="text-xl font-bold mb-2">{box.title}</h2>
+              <h2 className="text-xl font-bold text-darkPrimary drop-shadow-3xl mb-2">{box.title}</h2>
               <p className="text-gray-700 mb-4">{box.description}</p>
               {/* Button for Redirection */}
               <Link href={box.link}>
-                <button className="inline-block px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-700 transition-colors">
+                <button className="inline-block px-4 py-2 bg-darkPrimary text-white rounded-full hover:bg-darkSecondary transition-colors">
                   Learn More
                 </button>
               </Link>
