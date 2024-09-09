@@ -1,5 +1,5 @@
+"use client";
 import React, { useRef, useState } from "react";
-import Link from 'next/link'; // Import Link from Next.js
 
 export default function Product() {
     return (

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import Link from 'next/link'; // Import Link from Next.js
+import Link from 'next/link';
 
 const projectItems = [
   { id: 1, name: "PT Berlico Mulia Farma - Sidomuncul", image: "Project-Berlico.jpg", url: "/projects/berlico-mulia-farma" },
@@ -9,7 +9,6 @@ const projectItems = [
   { id: 3, name: "PT Bintang Toedjoe", image: "Project-BintangToedjoe.jpg", url: "/projects/bintang-toedjoe" },
   { id: 4, name: "PT Dankos Farma Tbk", image: "Project-Dankos.jpg", url: "/projects/dankos-farma" },
   { id: 5, name: "Project 5", image: "Project-Berlico.jpg", url: "/projects/project-5" },
-  // Add more items as needed
 ];
 
 export default function ProjectReference() {

@@ -28,7 +28,7 @@ export default function Navbar() {
         <div className="flex items-center">
           <Link href="/">
             <img
-              src="Logo-Artha-Inti-Manunggal-rev.png" // Replace with the path to your logo image
+              src="Logo-Artha-Inti-Manunggal-rev.png"
               alt="Artha Inti Logo"
               className={`h-8 transition-all duration-300 ease-in-out ${
                 isScrolled ? "h-6" : "h-8"
