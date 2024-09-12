@@ -75,7 +75,7 @@ export default function SidescrollerMenu() {
   }, [currentIndex]);
 
   return (
-    <div className="relative pt-12 pb-24 flex flex-col items-center justify-center bg-primary from-blue-100 to-white overflow-hidden">
+    <div className="relative flex flex-col items-center justify-center bg-primary from-blue-100 to-white overflow-hidden">
       {/* Sidescroller Container */}
       <div className="overflow-hidden w-full max-w-4xl" ref={scrollContainerRef}>
         <div className="flex space-x-0 w-full">
