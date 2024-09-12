@@ -76,9 +76,6 @@ export default function SidescrollerMenu() {
 
   return (
     <div className="relative pt-12 pb-24 flex flex-col items-center justify-center bg-primary from-blue-100 to-white overflow-hidden">
-      {/* Sliced Off Effect at Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 w-full h-32 bg-secondary rounded-t-[50%] transform translate-y-16"></div>
-
       {/* Sidescroller Container */}
       <div className="overflow-hidden w-full max-w-4xl" ref={scrollContainerRef}>
         <div className="flex space-x-0 w-full">

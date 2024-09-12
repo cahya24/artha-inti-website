@@ -4,10 +4,7 @@ import React from 'react';
 
 export default function TextContent2() {
   return (
-    <div className="relative bg-primary py-16"> {/* Adjusted background and padding */}
-      {/* Sliced Off Effect at Top */}
-      <div className="absolute top-0 left-0 right-0 w-full h-32 bg-secondary rounded-b-[50%] transform -translate-y-16"></div>
-      
+    <div className="relative bg-primary py-16"> {/* Adjusted background and padding */}    
       <div className="min-h-fit bg-primary flex items-center justify-center p-6 relative z-10"> {/* Ensure content appears above the sliced-off effect */}
         <div className="max-w-5xl w-full">
           {/* Headline Title */}
@@ -80,9 +77,6 @@ export default function TextContent2() {
           </div>
         </div>
       </div>
-
-      {/* Sliced Off Effect at Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 w-full h-32 bg-secondary rounded-t-[50%] transform translate-y-16"></div>
     </div>
   );
 }

@@ -54,10 +54,9 @@ export default function ProjectReference() {
 
   return (
     <div className="relative bg-primary pt-24 pb-36">
-      {/* Sliced Off Effect at Top */}
-      <div className="absolute top-0 left-0 right-0 w-full h-32 bg-secondary rounded-b-[50%] transform -translate-y-16"></div>
+  
       <h2 className="text-darkPrimary text-2xl text-center mb-6">Project References</h2>
-      
+
       <div
         className="relative flex items-center justify-center"
         onMouseMove={handleMouseMove}
@@ -126,9 +125,6 @@ export default function ProjectReference() {
           </div>
         </button>
       </div>
-
-      {/* Sliced Off Effect at Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 w-full h-32 bg-secondary rounded-t-[50%] transform translate-y-16"></div>
     </div>
   );
 }
