@@ -8,27 +8,30 @@ import ProjectReference from './component/projectreference';
 import TextContent1 from './component/textcontent1.js';
 import TextContent2 from './component/textcontent2';
 import TextContent3 from './component/textcontent3';
+import SeparatorTop1 from './component/separatortop1';
+import SeparatorBot1 from './component/separatorbot1';
+import SeparatorTop2 from './component/separatortop2';
+import SeparatorBot2 from './component/separatorbot2';
+import SeparatorTop3 from './component/separatortop3';
+import TempSeparatorBot1 from './component/tempseparatorbot1';
+import TempSeparatorTop1 from './component/tempseparatortop1';
+import TempSeparatorBot2 from './component/tempseparatorbot2';
+import TempSeparatorTop2 from './component/tempseparatortop2';
+import TempSeparatorBot3 from './component/tempseparatorbot3';
 
 export default function HomePage() {
   return (
     <div>
       <SidescrollerMenu />
-      <div className='h-36 overflow-hidden bg-primary'>
-        <svg
-          className="h-full w-full"
-          xmlns="http://www.w3.org/2000/svg" 
-          viewBox="0 0 1440 320"
-          preserveAspectRatio="none">
-          <path fill="#EEF7FF" fill-opacity="1" d="M0,160L80,154.7C160,149,320,139,480,160C640,181,800,235,960,229.3C1120,224,1280,160,1360,128L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
-        </svg>
-      </div>
+      <TempSeparatorBot1 />
       <ContentBoxSection />
-      <div className='h-36 overflow-hidden'>
-        <svg viewBox="0 0 500 150" preserveAspectRatio="none" className="h-full w-full"><path d="M-49.39,-50.83 C5.92,167.27 402.37,112.98 499.43,64.63 L500.00,150.00 L-1.41,170.22 Z" className="stroke: none; fill: #0057B8;"></path></svg>
-      </div>
+      <TempSeparatorTop1 />
       <ProjectReference />
+      <TempSeparatorBot2 />
       <TextContent1 />
+      <TempSeparatorTop2 />
       <TextContent2 />
+      <TempSeparatorBot3 />
       <TextContent3 />
     </div>
   );
