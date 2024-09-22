@@ -7,21 +7,21 @@ const contentBoxes = [
     id: 1,
     title: 'Feature 1',
     description: 'Learn more about Feature 1 and how it can benefit you.',
-    image: 'feature1.jpg',
+    image: 'Artha-Inti-Equipment.jpg',
     link: '/feature1',
   },
   {
     id: 2,
     title: 'Feature 2',
     description: 'Discover the advantages of Feature 2 for your needs.',
-    image: 'feature2.jpg',
+    image: 'Artha-Inti-Home-Optimization.jpg',
     link: '/feature2',
   },
   {
     id: 3,
     title: 'Feature 3',
     description: 'Explore the unique qualities of Feature 3 and its uses.',
-    image: 'feature3.jpg',
+    image: 'Artha-Inti-Services.jpg',
     link: '/feature3',
   },
   // Add more content boxes as needed
@@ -29,9 +29,9 @@ const contentBoxes = [
 
 export default function ContentBoxSection() {
   return (
-    <div className="bg-secondary w-full flex flex-col items-center">
+    <div className="bg-secondary w-full flex flex-col items-center pb-20 -mt-[125px]">
       {/* Grid Container for Content Boxes */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl px-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-24 w-full max-w-6xl px-4 z-30">
         {contentBoxes.map((box, index) => (
           <div
             key={box.id}
