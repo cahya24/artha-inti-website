@@ -65,11 +65,13 @@ export default function SidescrollerMenu() {
     }
   };
 
+  // Ensure auto-scrolling starts
   useEffect(() => {
     startAutoScroll();
     return () => stopAutoScroll();
   }, []);
 
+  // Scroll when the currentIndex changes
   useEffect(() => {
     scrollToIndex(currentIndex);
   }, [currentIndex]);
@@ -81,28 +83,38 @@ export default function SidescrollerMenu() {
         <img
           src={items[currentIndex].image}
           alt={items[currentIndex].name}
-          layout="fill"
           className="transition-opacity duration-500 ease-in-out object-cover w-full h-full"
         />
       </div>
-      
+
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60 z-10"></div>
 
       {/* Content Container */}
-      <div className="absolute z-20 h-full overflow-hidden start-64 p-0" ref={scrollContainerRef}>
-        <div className="flex h-full">
-          {items.map((item, index) => (
-            <div key={item.id} className="flex-none w-full h-full flex items-center justify-start px-4">
-              <div className="p-6 rounded-lg max-w-xl">
-                <h3 className="text-2xl font-bold text-white">{item.name}</h3>
-                <p className="text-base text-slate-50 mb-4">{item.description}</p>
-                <button className="px-4 py-2 bg-darkPrimary text-white rounded-lg hover:bg-darkSecondary transition-all duration-300 ease-in-out">
-                  Learn More
-                </button>
-              </div>
-            </div>
-          ))}
+      <div className="absolute z-20 w-full h-full flex items-center start-64 px-8">
+        <div className="max-w-2xl text-left">
+          <h3 className="text-4xl font-bold text-white mb-4">{items[currentIndex].name}</h3>
+          <p className="text-base text-slate-50 mb-6">{items[currentIndex].description}</p>
+          <button className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-all duration-300 ease-in-out">
+            Find Services
+          </button>
+
+          {/* Rectangular Indicator Dots */}
+          <div className="mt-6 flex space-x-2 justify-start z-30 relative">
+            {items.map((_, index) => (
+              <button
+                key={index}
+                className={`w-10 h-2 rounded-full cursor-pointer ${currentIndex === index ? "bg-white" : "bg-gray-400"}`}
+                onClick={() => {
+                  // Ensure click updates the index properly
+                  stopAutoScroll();
+                  setCurrentIndex(index);
+                  startAutoScroll();
+                }}
+              >
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -113,7 +125,7 @@ export default function SidescrollerMenu() {
             className="relative w-full h-full"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1000 100"
-            preserveAspectRatio='none'
+            preserveAspectRatio="none"
           >
             {/* Stroke */}
             <path
@@ -127,22 +139,6 @@ export default function SidescrollerMenu() {
             />
           </svg>
         </div>
-      </div>
-
-      {/* Indicator Dots */}
-      <div className="absolute bottom-8 left-1/4 transform -translate-x-1/2 flex space-x-2 z-40">
-        {items.map((_, index) => (
-          <button
-            key={index}
-            className={`w-4 h-4 rounded-full ${currentIndex === index ? "bg-darkPrimary" : "bg-darkSecondary"}`}
-            onClick={() => {
-              stopAutoScroll();
-              scrollToIndex(index);
-              startAutoScroll();
-            }}
-          >
-          </button>
-        ))}
       </div>
     </div>
   );
