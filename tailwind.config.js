@@ -10,10 +10,10 @@ module.exports = {
         '3xl': '0_1.2px_1.2px_rgba(0,0,0,1.2)',
       },
       colors: {
-        primary: '#CDE8E5',
-        secondary: '#EEF7FF',
-        darkPrimary: '#4D869C',
-        darkSecondary: '#7AB2B2'
+        primary: '#096192',
+        secondary: 'white',
+        darkPrimary: '#096192',
+        darkSecondary: '#096192'
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'], // Replace 'Inter' with MCPUR's font

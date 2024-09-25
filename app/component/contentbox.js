@@ -35,7 +35,7 @@ export default function ContentBoxSection() {
         {contentBoxes.map((box, index) => (
           <div
             key={box.id}
-            className={`group relative flex flex-col items-center bg-primary p-6 rounded-lg shadow-lg transition-transform transform hover:-translate-y-${
+            className={`group relative flex flex-col items-center bg-secondary p-6 rounded-lg shadow-lg transition-transform transform hover:-translate-y-${
               index === 0 ? '1' : index === 1 ? '3' : '2'
             } hover:scale-105 hover:shadow-xl`}
           >
@@ -50,7 +50,7 @@ export default function ContentBoxSection() {
 
             {/* Text Section */}
             <div className="mt-4 text-center">
-              <h2 className="text-xl font-bold text-darkPrimary drop-shadow-3xl mb-2">{box.title}</h2>
+              <h2 className="text-xl font-bold text-black drop-shadow-3xl mb-2">{box.title}</h2>
               <p className="text-gray-700 mb-4">{box.description}</p>
               {/* Button for Redirection */}
               <Link href={box.link}>

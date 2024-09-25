@@ -92,9 +92,9 @@ export default function SidescrollerMenu() {
 
       {/* Content Container */}
       <div className="absolute z-20 w-full h-full flex items-center start-64 px-8">
-        <div className="max-w-2xl text-left">
-          <h3 className="text-4xl font-bold text-white mb-4">{items[currentIndex].name}</h3>
-          <p className="text-base text-slate-50 mb-6">{items[currentIndex].description}</p>
+        <div className="max-w-3xl text-left">
+          <h3 className="text-4xl font-bold text-white mb-4 line-clamp-2">{items[currentIndex].name}</h3>
+          <p className="text-base text-slate-50 mb-6 line-clamp-2">{items[currentIndex].description}</p>
           <button className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-all duration-300 ease-in-out">
             Find Services
           </button>
@@ -130,12 +130,12 @@ export default function SidescrollerMenu() {
             {/* Stroke */}
             <path
               d="M1000 100V0.3C938 31 877.6 51.3 795 34c-83.8-17.6-160.5-20.4-240 12-54 22-110 26-173 10a392.2 392.2 0 0 0-222 5C105 78 49.7 97.9 0 88.2V100h1000Z"
-              fill="#7AB2B2"
+              fill="#1171ba"
             />
             {/* Main Path */}
             <path
               d="M1000 100V25.3C938 56 877.6 71.3 795 54c-83.8-17.6-160.5-25.4-240 7-54 22-110 21-173 5-76.5-19.4-146.5-23.3-222 0C105 83 49.7 97.9 0 88.2V100h1000Z"
-              fill="#EEF7FF"
+              fill="white"
             />
           </svg>
         </div>
