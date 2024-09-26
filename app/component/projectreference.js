@@ -55,7 +55,9 @@ export default function ProjectReference() {
   return (
     <div className="relative bg-primary pt-24 pb-36">
   
-      <h2 className="text-darkPrimary text-2xl text-center mb-6">Project References</h2>
+      <h2 className="text-secondary font-bold text-3xl text-center mb-4">Project References</h2>
+
+      <h3 className="text-secondary font-medium text-2xl text-center mb-12">Find out more about our latest project here.</h3>
 
       <div
         className="relative flex items-center justify-center"

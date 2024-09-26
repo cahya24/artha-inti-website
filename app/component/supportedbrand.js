@@ -2,16 +2,16 @@
 
 import React from 'react';
 
-export default function TextContent2() {
+export default function SupportedBrand() {
   return (
     <div className="relative bg-primary py-16"> {/* Adjusted background and padding */}    
       <div className="min-h-fit bg-primary flex items-center justify-center p-6 relative z-10"> {/* Ensure content appears above the sliced-off effect */}
         <div className="max-w-5xl w-full">
           {/* Headline Title */}
-          <h1 className="text-4xl font-bold text-darkPrimary mb-6 text-center">Why Artha Inti?</h1>
+          <h1 className="text-4xl font-bold text-secondary mb-4 text-center">Why Artha Inti?</h1>
           
           {/* Description Text */}
-          <p className="text-lg text-darkSecondary mb-8 text-center">
+          <p className="text-lg text-secondary mb-8 text-center">
             With tons of experiences, learn and grow together with our customers, PT. Artha Inti Manunggal always focus on long term partnership, therefore we build our reference and customer loyalty in more than 10 years in Indonesia. Another important things why Artha Inti now become one of the water treatment leader in Indonesia is because support from the well-known brand such as Alfa Laval, Ozonia, Dow, Aquafine, Gemu, Overton, Calgon and so many world class brand. So we have the global knowledge with strong local support and understanding.
           </p>
           

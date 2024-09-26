@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
         
         {children}
         {/* Footer */}
-        <footer className="p-6 bg-primary text-black text-center">
+        <footer className="p-6 bg-primary text-white text-center font-bold">
           <p>&copy; 2024 PT Artha Inti Manunggal. All rights reserved.</p>
         </footer>
       </body>

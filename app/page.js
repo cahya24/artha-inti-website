@@ -6,7 +6,7 @@ import SidescrollerMenu from './component/sidescrollermenu.js';
 import ContentBoxSection from './component/contentbox.js';
 import ProjectReference from './component/projectreference';
 import TextContent1 from './component/textcontent1.js';
-import TextContent2 from './component/textcontent2';
+import SupportedBrand from './component/supportedbrand';
 import TextContent3 from './component/textcontent3';
 import SeparatorBotRight from './component/separatorbotright';
 import SeparatorTopLeft from './component/separatortopleft';
@@ -23,7 +23,7 @@ export default function HomePage() {
       <SeparatorBotRight />
       <TextContent1 />
       <SeparatorTopRight />
-      <TextContent2 />
+      <SupportedBrand />
       <SeparatorBotLeft />
       <TextContent3 />
     </div>
