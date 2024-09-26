@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 const items = [
   {
@@ -35,87 +35,85 @@ const items = [
   },
 ];
 
+function IndicatorDots({ currentIndex, setCurrentIndex, resetTimer }) {
+  return (
+    <div className="flex space-x-2 mt-6">
+      {items.map((_, index) => (
+        <button
+          key={index}
+          className={`w-10 h-2 rounded-full cursor-pointer transition-all duration-300 ${
+            currentIndex === index ? "bg-white" : "bg-gray-400"
+          }`}
+          onClick={() => {
+            setCurrentIndex(index);
+            resetTimer();
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function SidescrollerMenu() {
-  const scrollContainerRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const autoScrollIntervalRef = useRef(null);
+  const [timer, setTimer] = useState(null);
 
-  const scrollToIndex = (index) => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = index * (scrollContainerRef.current.scrollWidth / items.length);
-      scrollContainerRef.current.scrollTo({
-        left: scrollAmount,
-        behavior: "smooth",
-      });
-      setCurrentIndex(index);
-    }
-  };
-
-  const startAutoScroll = () => {
-    stopAutoScroll();
-    autoScrollIntervalRef.current = setInterval(() => {
+  const startTimer = useCallback(() => {
+    return setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
     }, 5000);
-  };
-
-  const stopAutoScroll = () => {
-    if (autoScrollIntervalRef.current) {
-      clearInterval(autoScrollIntervalRef.current);
-      autoScrollIntervalRef.current = null;
-    }
-  };
-
-  // Ensure auto-scrolling starts
-  useEffect(() => {
-    startAutoScroll();
-    return () => stopAutoScroll();
   }, []);
 
-  // Scroll when the currentIndex changes
+  const resetTimer = useCallback(() => {
+    if (timer) clearInterval(timer);
+    const newTimer = startTimer();
+    setTimer(newTimer);
+  }, [timer, startTimer]);
+
   useEffect(() => {
-    scrollToIndex(currentIndex);
-  }, [currentIndex]);
+    const newTimer = startTimer();
+    setTimer(newTimer);
+    return () => {
+      if (newTimer) clearInterval(newTimer);
+    };
+  }, [startTimer]);
 
   return (
     <div className="relative w-full h-[700px] overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <img
-          src={items[currentIndex].image}
-          alt={items[currentIndex].name}
-          className="transition-opacity duration-500 ease-in-out object-cover w-full h-full"
-        />
-      </div>
+      {/* Carousel Container */}
+      <div 
+        className="absolute inset-0 flex transition-transform duration-500 ease-in-out"
+        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+      >
+        {items.map((item, index) => (
+          <div key={item.id} className="w-full h-full flex-shrink-0 relative">
+            {/* Background Image */}
+            <img
+              src={item.image}
+              alt={item.name}
+              className="object-cover w-full h-full"
+            />
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-950 opacity-40 z-10"></div>
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-950 opacity-40 z-10"></div>
 
-      {/* Content Container */}
-      <div className="absolute z-20 w-full h-full flex items-center start-64 px-8">
-        <div className="max-w-3xl text-left">
-          <h3 className="text-4xl font-bold text-white mb-4 line-clamp-2">{items[currentIndex].name}</h3>
-          <p className="text-base text-slate-50 mb-6 line-clamp-2">{items[currentIndex].description}</p>
-          <button className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-all duration-300 ease-in-out">
-            Find Services
-          </button>
-
-          {/* Rectangular Indicator Dots */}
-          <div className="mt-6 flex space-x-2 justify-start z-30 relative">
-            {items.map((_, index) => (
-              <button
-                key={index}
-                className={`w-10 h-2 rounded-full cursor-pointer ${currentIndex === index ? "bg-white" : "bg-gray-400"}`}
-                onClick={() => {
-                  // Ensure click updates the index properly
-                  stopAutoScroll();
-                  setCurrentIndex(index);
-                  startAutoScroll();
-                }}
-              >
-              </button>
-            ))}
+            {/* Content */}
+            <div className="absolute z-20 inset-0 flex items-center">
+              <div className="max-w-3xl text-left ml-64 px-8">
+                <h3 className="text-4xl font-bold text-white mb-4 line-clamp-2">{item.name}</h3>
+                <p className="text-base text-slate-50 mb-6 line-clamp-2">{item.description}</p>
+                <button className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-all duration-300 ease-in-out">
+                  Find Services
+                </button>
+                <IndicatorDots 
+                  currentIndex={currentIndex}
+                  setCurrentIndex={setCurrentIndex}
+                  resetTimer={resetTimer}
+                />
+              </div>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
 
       {/* SVG Separator */}
@@ -127,12 +125,10 @@ export default function SidescrollerMenu() {
             viewBox="0 0 1000 100"
             preserveAspectRatio="none"
           >
-            {/* Stroke */}
             <path
               d="M1000 100V0.3C938 31 877.6 51.3 795 34c-83.8-17.6-160.5-20.4-240 12-54 22-110 26-173 10a392.2 392.2 0 0 0-222 5C105 78 49.7 97.9 0 88.2V100h1000Z"
               fill="#1171ba"
             />
-            {/* Main Path */}
             <path
               d="M1000 100V25.3C938 56 877.6 71.3 795 54c-83.8-17.6-160.5-25.4-240 7-54 22-110 21-173 5-76.5-19.4-146.5-23.3-222 0C105 83 49.7 97.9 0 88.2V100h1000Z"
               fill="white"
