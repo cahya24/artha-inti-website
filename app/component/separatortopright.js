@@ -6,7 +6,7 @@ export default function SeparatorTopRight() {
       <svg
         className="relative w-full h-full"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1000 100"
+        viewBox="100 0 900 100"
         fill="none"
         preserveAspectRatio='none'
       >

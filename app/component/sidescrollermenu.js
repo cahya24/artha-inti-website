@@ -88,7 +88,7 @@ export default function SidescrollerMenu() {
       </div>
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60 z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-950 opacity-40 z-10"></div>
 
       {/* Content Container */}
       <div className="absolute z-20 w-full h-full flex items-center start-64 px-8">

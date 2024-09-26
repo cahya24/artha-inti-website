@@ -53,11 +53,11 @@ export default function ProjectReference() {
   };
 
   return (
-    <div className="relative bg-primary pt-24 pb-36">
+    <div className="relative bg-secondary pt-24 pb-36">
   
-      <h2 className="text-secondary font-bold text-3xl text-center mb-4">Project References</h2>
+      <h2 className="text-black font-bold text-3xl text-center mb-4">Project References</h2>
 
-      <h3 className="text-secondary font-medium text-2xl text-center mb-12">Find out more about our latest project here.</h3>
+      <h3 className="text-black font-medium text-2xl text-center mb-12">Find out more about our latest project here.</h3>
 
       <div
         className="relative flex items-center justify-center"
@@ -71,7 +71,7 @@ export default function ProjectReference() {
             hoverPosition === "left" ? "opacity-100" : "opacity-0"
           }`}
         >
-          <div className="bg-secondary p-3 rounded-full shadow-md flex justify-center items-center">
+          <div className="bg-secondary p-3 rounded-full border-solid border-4 border-primary shadow-md flex justify-center items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -114,7 +114,7 @@ export default function ProjectReference() {
             hoverPosition === "right" ? "opacity-100" : "opacity-0"
           }`}
         >
-          <div className="bg-secondary p-3 rounded-full shadow-md flex justify-center items-center">
+          <div className="bg-secondary p-3 rounded-full border-solid border-4 border-primary shadow-md flex justify-center items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

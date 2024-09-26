@@ -49,7 +49,7 @@ export default function Navbar() {
           <div className="flex items-center">
             <Link href="/">
               <img
-                src="/Logo-Artha-Inti-Manunggal-rev.png"
+                src="/Logo-Artha-Inti-Manunggal.jpg"
                 alt="Artha Inti Logo"
                 className={`h-12 transition-all duration-300 ease-in-out ${
                   isScrolled ? "h-10" : "h-12"

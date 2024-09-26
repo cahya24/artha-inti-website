@@ -2,11 +2,11 @@ import React from 'react';
 
 export default function SeparatorTopLeft() {
   return (
-    <div className="relative w-full h-32 bg-primary">
+    <div className="relative w-full h-32 bg-secondary">
       <svg
         className="relative w-full h-full"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1000 100"
+        viewBox="0 0 900 100"
         fill="none"
         preserveAspectRatio='none'
       >
