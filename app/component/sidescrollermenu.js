@@ -37,7 +37,7 @@ const items = [
 
 function IndicatorDots({ currentIndex, setCurrentIndex, resetTimer }) {
   return (
-    <div className="flex space-x-2 mt-6">
+    <div className="flex space-x-2">
       {items.map((_, index) => (
         <button
           key={index}
@@ -56,27 +56,22 @@ function IndicatorDots({ currentIndex, setCurrentIndex, resetTimer }) {
 
 export default function SidescrollerMenu() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [timer, setTimer] = useState(null);
 
-  const startTimer = useCallback(() => {
-    return setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
-    }, 5000);
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
   }, []);
 
   const resetTimer = useCallback(() => {
-    if (timer) clearInterval(timer);
-    const newTimer = startTimer();
-    setTimer(newTimer);
-  }, [timer, startTimer]);
+    // This function is now empty as we're using a different approach
+  }, []);
 
   useEffect(() => {
-    const newTimer = startTimer();
-    setTimer(newTimer);
+    const timer = setInterval(nextSlide, 5000);
+
     return () => {
-      if (newTimer) clearInterval(newTimer);
+      clearInterval(timer);
     };
-  }, [startTimer]);
+  }, [nextSlide]);
 
   return (
     <div className="relative w-full h-[700px] overflow-hidden">
@@ -99,21 +94,25 @@ export default function SidescrollerMenu() {
 
             {/* Content */}
             <div className="absolute z-20 inset-0 flex items-center">
-              <div className="max-w-3xl text-left ml-64 px-8">
-                <h3 className="text-4xl font-bold text-white mb-4 line-clamp-2">{item.name}</h3>
-                <p className="text-base text-slate-50 mb-6 line-clamp-2">{item.description}</p>
-                <button className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-all duration-300 ease-in-out">
+              <div className="max-w-3xl text-left ml-16 sm:ml-24 md:ml-32 lg:ml-64 px-4 sm:px-6 md:px-8">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-3 md:mb-4 line-clamp-2">{item.name}</h3>
+                <p className="text-sm sm:text-base text-slate-50 mb-4 sm:mb-5 md:mb-6 line-clamp-2">{item.description}</p>
+                <button className="px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-all duration-300 ease-in-out text-sm sm:text-base">
                   Find Services
                 </button>
-                <IndicatorDots 
-                  currentIndex={currentIndex}
-                  setCurrentIndex={setCurrentIndex}
-                  resetTimer={resetTimer}
-                />
               </div>
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Indicator Dots - positioned absolutely */}
+      <div className="absolute bottom-40 left-26 sm:left-32 md:left-40 lg:left-72 z-30">
+        <IndicatorDots 
+          currentIndex={currentIndex}
+          setCurrentIndex={setCurrentIndex}
+          resetTimer={resetTimer}
+        />
       </div>
 
       {/* SVG Separator */}
@@ -122,7 +121,7 @@ export default function SidescrollerMenu() {
           <svg
             className="relative w-full h-full"
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1000 100"
+            viewBox="0 0 900 100"
             preserveAspectRatio="none"
           >
             <path
