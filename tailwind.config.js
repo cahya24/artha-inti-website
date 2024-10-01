@@ -13,7 +13,9 @@ module.exports = {
         primary: '#096192',
         secondary: 'white',
         darkPrimary: '#096192',
-        darkSecondary: '#096192'
+        darkSecondary: '#096192',
+        buttonColor: "#22c55e",
+        buttonColorHover: "#16a34a"
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'], // Replace 'Inter' with MCPUR's font

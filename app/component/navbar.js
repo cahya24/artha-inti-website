@@ -31,8 +31,8 @@ export default function Navbar() {
     <header className="sticky top-0 z-50">
       {/* Top Small Bar */}
       <div className="bg-darkSecondary h-10 text-white flex justify-end items-stretch">
-        <Link href="/contact" className="h-full flex items-stretch">
-          <button className="px-6 mr-52 bg-green-600 text-white hover:bg-green-500 transition-all duration-300 ease-in-out text-sm font-semibold">
+        <Link href="/#contact-us" className="h-full flex items-stretch">
+          <button className="px-6 mr-52 bg-buttonColor text-white hover:bg-buttonColorHover transition-all duration-300 ease-in-out text-sm font-semibold">
             Contact Us
           </button>
         </Link>

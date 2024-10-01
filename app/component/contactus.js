@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-export default function TextContent3() {
+export default function ContactUs() {
   return (
-    <div className="bg-secondary py-24 flex flex-col items-center justify-center px-6">
+    <div id='contact-us' className="bg-secondary py-24 flex flex-col items-center justify-center px-6">
       <div className="max-w-4xl text-center">
         {/* Headline Title */}
         <h2 className="text-3xl font-bold text-blue-900 mb-6">Our Goal is to Solve Your Problem!</h2>

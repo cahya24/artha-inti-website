@@ -96,8 +96,8 @@ export default function SidescrollerMenu() {
             <div className="absolute z-20 inset-0 flex items-center">
               <div className="max-w-3xl text-left ml-16 sm:ml-24 md:ml-32 lg:ml-64 px-4 sm:px-6 md:px-8">
                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-3 md:mb-4 line-clamp-2">{item.name}</h3>
-                <p className="text-sm sm:text-base text-slate-50 mb-4 sm:mb-5 md:mb-6 line-clamp-2">{item.description}</p>
-                <button className="px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-all duration-300 ease-in-out text-sm sm:text-base">
+                <p className="text-sm sm:text-base text-slate-50 mb-4 sm:mb-5 md:mb-6 line-clamp-3">{item.description}</p>
+                <button className="px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 bg-buttonColor text-white rounded-lg hover:bg-buttonColorHover transition-all duration-300 ease-in-out text-sm sm:text-base">
                   Find Services
                 </button>
               </div>
@@ -121,7 +121,7 @@ export default function SidescrollerMenu() {
           <svg
             className="relative w-full h-full"
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 900 100"
+            viewBox="100 0 900 100"
             preserveAspectRatio="none"
           >
             <path
