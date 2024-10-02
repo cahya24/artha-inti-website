@@ -116,7 +116,7 @@ export default function SidescrollerMenu() {
 
   return (
     <div
-      className="relative w-full h-[700px] overflow-hidden"
+      className="relative w-full h-[500px] sm:h-[400px] md:h-[700px] overflow-hidden"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -136,15 +136,15 @@ export default function SidescrollerMenu() {
             />
 
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-950 opacity-40 z-10"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-950 opacity-80 z-10"></div>
 
             {/* Content */}
             <div className="absolute z-20 inset-0 flex items-center">
-              <div className="max-w-3xl text-left ml-16 sm:ml-24 md:ml-32 lg:ml-64 px-4 sm:px-6 md:px-8">
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-3 md:mb-4 line-clamp-2">
+              <div className="max-w-3xl text-left sm:ml-0 md:ml-32 lg:ml-64 px-4 sm:px-6 md:px-8">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-3 md:mb-4 md:line-clamp-2">
                   {item.name}
                 </h3>
-                <p className="text-sm sm:text-base text-slate-50 mb-4 sm:mb-5 md:mb-6 line-clamp-3">
+                <p className="hidden md:block text-sm text-slate-50 mb-4 md:mb-6 line-clamp-3">
                   {item.description}
                 </p>
                 <button className="px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 bg-buttonColor text-white rounded-lg hover:bg-buttonColorHover transition-all duration-300 ease-in-out text-sm sm:text-base">
