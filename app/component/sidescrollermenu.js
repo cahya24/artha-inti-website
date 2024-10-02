@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 
 const items = [
   {
@@ -37,7 +37,7 @@ const items = [
 
 function IndicatorDots({ currentIndex, setCurrentIndex, resetTimer }) {
   return (
-    <div className="flex space-x-2">
+    <div className="hidden md:flex space-x-2">
       {items.map((_, index) => (
         <button
           key={index}
@@ -46,7 +46,7 @@ function IndicatorDots({ currentIndex, setCurrentIndex, resetTimer }) {
           }`}
           onClick={() => {
             setCurrentIndex(index);
-            resetTimer();
+            resetTimer(); // Reset timer on indicator click
           }}
         />
       ))}
@@ -56,31 +56,77 @@ function IndicatorDots({ currentIndex, setCurrentIndex, resetTimer }) {
 
 export default function SidescrollerMenu() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const startX = useRef(0); // To track touch start position
+  const isSwiping = useRef(false); // To track if the user is currently swiping
+  const slideInterval = useRef(null); // To store the auto-slide interval reference
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
   }, []);
 
-  const resetTimer = useCallback(() => {
-    // This function is now empty as we're using a different approach
+  const prevSlide = useCallback(() => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? items.length - 1 : prevIndex - 1
+    );
   }, []);
 
+  // Function to reset and restart the auto-slide timer
+  const resetTimer = useCallback(() => {
+    if (slideInterval.current) {
+      clearInterval(slideInterval.current); // Clear the current interval
+    }
+    // Restart the timer
+    slideInterval.current = setInterval(nextSlide, 5000);
+  }, [nextSlide]);
+
   useEffect(() => {
-    const timer = setInterval(nextSlide, 5000);
+    // Start the auto-slide timer
+    slideInterval.current = setInterval(nextSlide, 5000);
 
     return () => {
-      clearInterval(timer);
+      if (slideInterval.current) {
+        clearInterval(slideInterval.current); // Clean up interval on component unmount
+      }
     };
   }, [nextSlide]);
 
+  const handleTouchStart = (e) => {
+    startX.current = e.touches[0].clientX; // Capture touch start X position
+  };
+
+  const handleTouchMove = (e) => {
+    const touchX = e.touches[0].clientX;
+    if (!isSwiping.current) {
+      const diff = startX.current - touchX;
+      if (Math.abs(diff) > 50) { // Only consider a swipe if moved over 50px
+        if (diff > 0) {
+          nextSlide(); // Swipe left, show next slide
+        } else {
+          prevSlide(); // Swipe right, show previous slide
+        }
+        isSwiping.current = true; // Prevent multiple slide changes on single swipe
+        resetTimer(); // Reset the auto-slide timer after a swipe
+      }
+    }
+  };
+
+  const handleTouchEnd = () => {
+    isSwiping.current = false; // Reset swipe state
+  };
+
   return (
-    <div className="relative w-full h-[700px] overflow-hidden">
+    <div
+      className="relative w-full h-[700px] overflow-hidden"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       {/* Carousel Container */}
-      <div 
+      <div
         className="absolute inset-0 flex transition-transform duration-500 ease-in-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
-        {items.map((item, index) => (
+        {items.map((item) => (
           <div key={item.id} className="w-full h-full flex-shrink-0 relative">
             {/* Background Image */}
             <img
@@ -95,8 +141,12 @@ export default function SidescrollerMenu() {
             {/* Content */}
             <div className="absolute z-20 inset-0 flex items-center">
               <div className="max-w-3xl text-left ml-16 sm:ml-24 md:ml-32 lg:ml-64 px-4 sm:px-6 md:px-8">
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-3 md:mb-4 line-clamp-2">{item.name}</h3>
-                <p className="text-sm sm:text-base text-slate-50 mb-4 sm:mb-5 md:mb-6 line-clamp-3">{item.description}</p>
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-3 md:mb-4 line-clamp-2">
+                  {item.name}
+                </h3>
+                <p className="text-sm sm:text-base text-slate-50 mb-4 sm:mb-5 md:mb-6 line-clamp-3">
+                  {item.description}
+                </p>
                 <button className="px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 bg-buttonColor text-white rounded-lg hover:bg-buttonColorHover transition-all duration-300 ease-in-out text-sm sm:text-base">
                   Find Services
                 </button>
@@ -108,10 +158,10 @@ export default function SidescrollerMenu() {
 
       {/* Indicator Dots - positioned absolutely */}
       <div className="absolute bottom-40 left-26 sm:left-32 md:left-40 lg:left-72 z-30">
-        <IndicatorDots 
+        <IndicatorDots
           currentIndex={currentIndex}
           setCurrentIndex={setCurrentIndex}
-          resetTimer={resetTimer}
+          resetTimer={resetTimer} // Pass resetTimer to IndicatorDots to reset on click
         />
       </div>
 
