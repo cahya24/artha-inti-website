@@ -2,11 +2,12 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { FaChevronDown } from "react-icons/fa"; // Using react-icons for the arrow
+import { FaChevronDown, FaBars, FaTimes } from "react-icons/fa"; // FaBars for hamburger and FaTimes for close icon
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null); // State for hovered item
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for mobile menu
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,10 +30,10 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50">
-      {/* Top Small Bar */}
-      <div className="bg-darkSecondary h-10 text-white flex justify-end items-stretch">
-        <Link href="/#contact-us" className="h-full flex items-stretch">
-          <button className="px-6 mr-52 bg-buttonColor text-white hover:bg-buttonColorHover transition-all duration-300 ease-in-out text-sm font-semibold">
+      {/* Top Small Bar - Hidden on mobile by default */}
+      <div className="hidden md:flex bg-darkSecondary h-10 text-white justify-end items-stretch">
+        <Link href="/#contact-us" className="h-full flex items-center">
+          <button className="px-6 h-10 mr-52 bg-buttonColor text-white hover:bg-buttonColorHover transition-all duration-300 ease-in-out text-sm font-semibold">
             Contact Us
           </button>
         </Link>
@@ -58,8 +59,18 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Navigation Links */}
-          <ul className="flex space-x-8 text-black font-bold">
+          {/* Hamburger Menu Icon for Mobile */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-black text-2xl focus:outline-none"
+            >
+              {isMenuOpen ? <FaTimes /> : <FaBars />}
+            </button>
+          </div>
+
+          {/* Navigation Links for Desktop */}
+          <ul className="hidden md:flex space-x-8 text-black font-bold">
             {navItems.map((item) => (
               <li
                 key={item.href}
@@ -78,6 +89,34 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+
+          {/* Mobile Menu */}
+          <div
+            className={`${
+              isMenuOpen ? "block" : "hidden"
+            } md:hidden absolute top-full left-0 w-full bg-secondary shadow-lg`}
+          >
+            <ul className="flex flex-col space-y-6 text-black font-bold p-6"> {/* Increased padding and spacing */}
+              {navItems.map((item) => (
+                <li key={item.href} className="py-2 border-b"> {/* Added padding and border for separation */}
+                  <Link href={item.href} onClick={() => setIsMenuOpen(false)}>
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            {/* Top Small Bar - For Mobile Only (below the menu) */}
+            {isMenuOpen && (
+              <div className="block bg-darkSecondary h-10 text-white flex justify-start items-center">
+                <Link href="/#contact-us" className="h-full flex items-center">
+                  <button className="px-6 h-10 bg-buttonColor text-white hover:bg-buttonColorHover transition-all duration-300 ease-in-out text-sm font-semibold w-full">
+                    Contact Us
+                  </button>
+                </Link>
+              </div>
+            )}
+          </div>
         </nav>
       </div>
     </header>
