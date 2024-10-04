@@ -54,7 +54,7 @@ export default function ContentBoxSection() {
               <p className="text-gray-700 mb-4">{box.description}</p>
               {/* Button for Redirection */}
               <Link href={box.link}>
-                <button className="inline-block px-4 py-2 bg-buttonColor text-white rounded-lg opacity-0 transform scale-0 group-hover:scale-105 group-hover:opacity-100 group-hover:translate-y-2 transition-all duration-300 ease-in-out">
+                <button className="block inline-block md:inline-block px-4 py-2 bg-buttonColor text-white rounded-lg opacity-100 md:opacity-0 md:transform md:scale-0 md:group-hover:scale-105 md:group-hover:opacity-100 md:group-hover:translate-y-2 transition-all duration-300 ease-in-out">
                   Learn More
                 </button>
               </Link>

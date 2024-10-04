@@ -144,7 +144,7 @@ export default function SidescrollerMenu() {
                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-3 md:mb-4 md:line-clamp-2">
                   {item.name}
                 </h3>
-                <p className="hidden md:block text-sm text-slate-50 mb-4 md:mb-6 line-clamp-3">
+                <p className="hidden md:block text-md text-white mb-4 md:mb-6 line-clamp-3">
                   {item.description}
                 </p>
                 <button className="px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 bg-buttonColor text-white rounded-lg hover:bg-buttonColorHover transition-all duration-300 ease-in-out text-sm sm:text-base">
