@@ -14,6 +14,8 @@ const projectItems = [
 export default function ProjectReference() {
   const containerRef = useRef(null);
   const [hoverPosition, setHoverPosition] = useState(null);
+  const [startX, setStartX] = useState(0); // For tracking touch start position
+  const [scrollLeftPos, setScrollLeftPos] = useState(0); // Store initial scroll position
 
   const scrollLeft = () => {
     if (containerRef.current) {
@@ -52,11 +54,20 @@ export default function ProjectReference() {
     setHoverPosition(null);
   };
 
+  const handleTouchStart = (e) => {
+    setStartX(e.touches[0].clientX); // Track the initial touch position
+    setScrollLeftPos(containerRef.current.scrollLeft); // Track the scroll position
+  };
+
+  const handleTouchMove = (e) => {
+    if (!containerRef.current) return;
+    const deltaX = e.touches[0].clientX - startX; // Calculate the distance moved
+    containerRef.current.scrollLeft = scrollLeftPos - deltaX; // Scroll the container
+  };
+
   return (
     <div className="relative bg-secondary pt-24 pb-36">
-  
       <h2 className="text-black font-bold text-3xl text-center mb-4">Project References</h2>
-
       <h3 className="text-black font-medium text-2xl text-center mb-12">Find out more about our latest project here.</h3>
 
       <div
@@ -64,10 +75,10 @@ export default function ProjectReference() {
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
-        {/* Left Scroll Button */}
+        {/* Left Scroll Button - Visible only on medium and larger screens */}
         <button
           onClick={scrollLeft}
-          className={`absolute left-10 top-1/2 transform -translate-y-1/2 z-10 h-full w-32 text-white p-2 transition-all duration-300 ${
+          className={`absolute left-10 top-1/2 transform -translate-y-1/2 z-10 h-full w-32 text-white p-2 transition-all duration-300 hidden md:block ${
             hoverPosition === "left" ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -85,7 +96,12 @@ export default function ProjectReference() {
         </button>
 
         {/* Scrollable Container */}
-        <div className="overflow-hidden w-[1380px] mx-4" ref={containerRef}>
+        <div
+          className="overflow-hidden w-[1380px] mx-4"
+          ref={containerRef}
+          onTouchStart={handleTouchStart} // Register touch start event
+          onTouchMove={handleTouchMove}  // Register touch move event
+        >
           <div className="flex space-x-4">
             {projectItems.map((item) => (
               <Link href={item.url} key={item.id}>
@@ -97,8 +113,8 @@ export default function ProjectReference() {
                     alt={item.name}
                     className="w-full h-full object-cover"
                   />
-                  {/* Hover effect */}
-                  <div className="absolute inset-0 bg-gray-900 bg-opacity-50 opacity-0 hover:opacity-100 transition flex items-center justify-center rounded-md">
+                  {/* For small screens, always show the text. For medium screens and up, apply hover effect */}
+                  <div className="absolute inset-0 bg-gray-900 bg-opacity-50 sm:bg-opacity-50 sm:opacity-100 md:opacity-0 md:hover:opacity-100 transition-opacity duration-300 ease-in-out flex items-center justify-center rounded-md">
                     <div className="text-white text-lg">{item.name}</div>
                   </div>
                 </div>
@@ -107,10 +123,10 @@ export default function ProjectReference() {
           </div>
         </div>
 
-        {/* Right Scroll Button */}
+        {/* Right Scroll Button - Visible only on medium and larger screens */}
         <button
           onClick={scrollRight}
-          className={`absolute right-10 top-1/2 transform -translate-y-1/2 z-10 h-full w-32 text-white p-2 transition-all duration-300 ${
+          className={`absolute right-10 top-1/2 transform -translate-y-1/2 z-10 h-full w-32 text-white p-2 transition-all duration-300 hidden md:block ${
             hoverPosition === "right" ? "opacity-100" : "opacity-0"
           }`}
         >
