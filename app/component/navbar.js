@@ -27,36 +27,43 @@ export default function Navbar() {
       name: "Product",
       href: "/product",
       subItems: [
-        { name: "EDI Water Treatment Indonesia", href: "/product/product1" },
-        { name: "Reverse Osmosis", href: "/product/product2" },
-        { name: "Water Treatment Chemicals", href: "/product/product3" }
+        { name: "EDI Water Treatment Indonesia", href: "/product/ediWaterTreatmentIndonesia" },
+        { name: "Reverse Osmosis", href: "/product/reverseOsmosis" },
+        { name: "Water Treatment Chemicals", href: "/product/waterTreatmentChemicals" }
       ]
     },
     {
       name: "Services",
       href: "/services",
       subItems: [
-        { name: "RO Membrane Cleaning", href: "/services/services1" },
-        { name: "RO Treatment", href: "/services/services2" },
-        { name: "Cooling Water Tower Treatment", href: "/services/services3" },
-        { name: "Chiller Water Treatment", href: "/services/services4" },
-        { name: "Boiler Water Treatment", href: "/services/services5" },
+        { name: "RO Membrane Cleaning", href: "/services/roMembraneCleaning" },
+        { name: "RO Treatment", href: "/services/roTreatment" },
+        { name: "Cooling Water Tower Treatment", href: "/services/coolingWaterTowerTreatment" },
+        { name: "Chiller Water Treatment", href: "/services/chillerWaterTreatment" },
+        { name: "Boiler Water Treatment", href: "/services/boilerWaterTreatment" },
       ]
     },
     {
       name: "Project References",
       href: "/projectreferences",
       subItems: [
-        { name: "PT Berlico Mulia Farma", href: "/projectreferences/project1" },
-        { name: "Reverse Osmosis", href: "/references/project2" },
-        { name: "PT Bintang Toedjoe", href: "/references/project3" },
-        { name: "PT Dankos Farma Tbk", href: "/references/project4" },
-        { name: "Reverse Osmosis", href: "/references/project5" },
+        { name: "PT Berlico Mulia Farma", href: "/projectreferences/ptBerlicoMuliaFarma" },
+        { name: "Reverse Osmosis", href: "/references/reverseOsmosis" },
+        { name: "PT Bintang Toedjoe", href: "/references/ptBintangToedjoe" },
+        { name: "PT Dankos Farma Tbk", href: "/references/ptDankosFarmaTbk" },
       ]
     },
     { 
       name: "Supported Brand", 
-      href: "/#supported-brand"
+      href: "/#supported-brand",
+      subItems: [
+        { name: "Alfalaval", href: "/supportedbrand/alfalaval" },
+        { name: "Aquafine", href: "/supportedbrand/aquafine" },
+        { name: "E - Cell", href: "/supportedbrand/ecell" },
+        { name: "Gemu", href: "/supportedbrand/gemu" },
+        { name: "Ionpure", href: "/supportedbrand/ionpure" },
+        { name: "Ozonia", href: "/supportedbrand/ozonia" },
+      ]
     }
   ];
 
