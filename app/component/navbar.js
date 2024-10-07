@@ -27,8 +27,9 @@ export default function Navbar() {
       name: "Product",
       href: "/product",
       subItems: [
-        { name: "Sub-Product 1", href: "/product/sub1" },
-        { name: "Sub-Product 2", href: "/product/sub2" }
+        { name: "EDI Water Treatment Indonesia", href: "/product/product1" },
+        { name: "Reverse Osmosis", href: "/product/product2" },
+        { name: "Water Treatment Chemicals", href: "/product/product3" }
       ]
     },
     {
@@ -81,15 +82,13 @@ export default function Navbar() {
               <img
                 src="/Logo-Artha-Inti-Manunggal.jpg"
                 alt="Artha Inti Logo"
-                className={`h-12 transition-all duration-300 ease-in-out ${
-                  isScrolled ? "h-10" : "h-12"
-                }`}
+                className={`h-12 transition-all duration-300 ease-in-out ${isScrolled ? "h-10" : "h-12"}`}
               />
             </Link>
           </div>
 
           {/* Hamburger Menu Icon for Mobile */}
-          <div className="md:hidden">
+          <div className="md:hidden ml-auto"> {/* Added `ml-auto` to push the icon to the far right */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-black text-2xl focus:outline-none"
@@ -98,8 +97,9 @@ export default function Navbar() {
             </button>
           </div>
 
+
           {/* Navigation Links for Desktop */}
-          <ul className="hidden md:flex space-x-8 text-black font-semibold">
+          <ul className={"`hidden md:flex space-x-8 text-black font-semibold"}>
             {navItems.map((item) => (
               <li
                 key={item.href}
@@ -108,7 +108,7 @@ export default function Navbar() {
                 onMouseEnter={() => setHoveredItem(item.href)}
                 onMouseLeave={() => setHoveredItem(null)}
               >
-                <Link href={item.href} className="flex items-center hover:text-primary">
+                <Link href={item.href} className="hidden md:flex items-center hover:text-primary">
                   {item.name}
                   <span
                     className={`ml-2 transition-transform duration-300 ease-in-out ${
@@ -122,15 +122,20 @@ export default function Navbar() {
                 {/* Dropdown for Desktop */}
                 {item.subItems && (
                   <ul
-                    className={`absolute left-0 top-full mt-4 w-48 bg-white shadow-2xl rounded-b-lg z-20 transition-all duration-300 ${
-                      hoveredItem === item.href ? "opacity-100 visible" : "opacity-0 invisible"
-                    }`}
+                    className={`absolute left-0 top-full w-48 bg-white shadow-2xl rounded-b-lg z-20 transition-all duration-300 
+                      ${
+                        hoveredItem === item.href ? "opacity-100 visible" : "opacity-0 invisible"
+                      }
+                      ${
+                        isScrolled ? "mt-4" : "mt-6"
+                      }
+                  `}
                     // Add MouseEnter/MouseLeave to the dropdown
                     onMouseEnter={() => setHoveredItem(item.href)}
                     onMouseLeave={() => setHoveredItem(null)}
                   >
                     {item.subItems.map((subItem) => (
-                      <li key={subItem.href} className="py-2 px-4 hover:text-primary">
+                      <li key={subItem.href} className="py-4 px-6 hover:text-primary hover:bg-gray-200">
                         <Link href={subItem.href}>{subItem.name}</Link>
                       </li>
                     ))}
@@ -149,7 +154,7 @@ export default function Navbar() {
             <ul className="flex flex-col space-y-6 text-black font-bold p-6">
               {navItems.map((item) => (
                 <li key={item.href} className="py-2 border-b">
-                  <div className="flex justify-between items-center">
+                  <div className="flex justify-between items-center hover:text-primary">
                     <Link href={item.href} onClick={() => setIsMenuOpen(false)}>
                       {item.name}
                     </Link>
@@ -159,7 +164,7 @@ export default function Navbar() {
                         className="focus:outline-none"
                       >
                         <FaChevronDown
-                          className={`transition-transform ${
+                          className={`transition-transform ease-in-out duration-300 ${
                             activeDropdown === item.href ? "rotate-180" : ""
                           }`}
                         />
