@@ -8,6 +8,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null); // State for hovered item
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State for mobile menu
+  const [activeDropdown, setActiveDropdown] = useState(null); // For mobile dropdowns
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,11 +23,39 @@ export default function Navbar() {
   }, []);
 
   const navItems = [
-    { name: "Product", href: "/product" },
-    { name: "Services", href: "/services" },
-    { name: "Project References", href: "/projectreferences" }, // New item
-    { name: "Supported Brand", href: "/supportedbrand" },
+    {
+      name: "Product",
+      href: "/product",
+      subItems: [
+        { name: "Sub-Product 1", href: "/product/sub1" },
+        { name: "Sub-Product 2", href: "/product/sub2" }
+      ]
+    },
+    {
+      name: "Services",
+      href: "/services",
+      subItems: [
+        { name: "Sub-Service 1", href: "/services/sub1" },
+        { name: "Sub-Service 2", href: "/services/sub2" }
+      ]
+    },
+    {
+      name: "Project References",
+      href: "/projectreferences",
+      subItems: [
+        { name: "Reference 1", href: "/references/sub1" },
+        { name: "Reference 2", href: "/references/sub2" }
+      ]
+    },
+    { 
+      name: "Supported Brand", 
+      href: "/#supported-brand"
+    }
   ];
+
+  const toggleDropdown = (href) => {
+    setActiveDropdown((prev) => (prev === href ? null : href)); // Toggle dropdown for mobile
+  };
 
   return (
     <header className="sticky top-0 z-50">
@@ -74,18 +103,39 @@ export default function Navbar() {
             {navItems.map((item) => (
               <li
                 key={item.href}
-                className="relative flex items-center group"
+                className="relative group"
+                // MouseEnter/MouseLeave for parent item
                 onMouseEnter={() => setHoveredItem(item.href)}
                 onMouseLeave={() => setHoveredItem(null)}
               >
-                <Link href={item.href}>{item.name}</Link>
-                <span
-                  className={`ml-2 transition-transform duration-300 ${
-                    hoveredItem === item.href ? "rotate-180" : ""
-                  }`}
-                >
-                  <FaChevronDown />
-                </span>
+                <Link href={item.href} className="flex items-center hover:text-primary">
+                  {item.name}
+                  <span
+                    className={`ml-2 transition-transform duration-300 ease-in-out ${
+                      hoveredItem === item.href && item.subItems ? "rotate-180" : ""
+                    }`}
+                  >
+                    <FaChevronDown />
+                  </span>
+                </Link>
+
+                {/* Dropdown for Desktop */}
+                {item.subItems && (
+                  <ul
+                    className={`absolute left-0 top-full mt-4 w-48 bg-white shadow-2xl rounded-b-lg z-20 transition-all duration-300 ${
+                      hoveredItem === item.href ? "opacity-100 visible" : "opacity-0 invisible"
+                    }`}
+                    // Add MouseEnter/MouseLeave to the dropdown
+                    onMouseEnter={() => setHoveredItem(item.href)}
+                    onMouseLeave={() => setHoveredItem(null)}
+                  >
+                    {item.subItems.map((subItem) => (
+                      <li key={subItem.href} className="py-2 px-4 hover:text-primary">
+                        <Link href={subItem.href}>{subItem.name}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             ))}
           </ul>
@@ -96,12 +146,37 @@ export default function Navbar() {
               isMenuOpen ? "block" : "hidden"
             } md:hidden absolute top-full left-0 w-full bg-secondary shadow-lg`}
           >
-            <ul className="flex flex-col space-y-6 text-black font-bold p-6"> {/* Increased padding and spacing */}
+            <ul className="flex flex-col space-y-6 text-black font-bold p-6">
               {navItems.map((item) => (
-                <li key={item.href} className="py-2 border-b"> {/* Added padding and border for separation */}
-                  <Link href={item.href} onClick={() => setIsMenuOpen(false)}>
-                    {item.name}
-                  </Link>
+                <li key={item.href} className="py-2 border-b">
+                  <div className="flex justify-between items-center">
+                    <Link href={item.href} onClick={() => setIsMenuOpen(false)}>
+                      {item.name}
+                    </Link>
+                    {item.subItems && (
+                      <button
+                        onClick={() => toggleDropdown(item.href)}
+                        className="focus:outline-none"
+                      >
+                        <FaChevronDown
+                          className={`transition-transform ${
+                            activeDropdown === item.href ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Dropdown for Mobile */}
+                  {item.subItems && activeDropdown === item.href && (
+                    <ul className="pl-6 mt-2">
+                      {item.subItems.map((subItem) => (
+                        <li key={subItem.href} className="py-2">
+                          <Link href={subItem.href}>{subItem.name}</Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </li>
               ))}
             </ul>

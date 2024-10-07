@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function SupportedBrand() {
   return (
-    <div className="relative bg-primary py-16"> {/* Adjusted background and padding */}    
+    <div id="supported-brand" className="relative bg-primary py-16"> {/* Adjusted background and padding */}    
       <div className="min-h-fit bg-primary flex items-center justify-center p-6 relative z-10"> {/* Ensure content appears above the sliced-off effect */}
         <div className="max-w-5xl w-full">
           {/* Headline Title */}
