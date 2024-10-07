@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const newsItems = [
@@ -28,6 +28,8 @@ const newsItems = [
 export default function ScrollableSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   const nextSlide = () => {
     if (!isTransitioning) {
@@ -47,6 +49,29 @@ export default function ScrollableSection() {
     }
   };
 
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.changedTouches[0].screenX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.changedTouches[0].screenX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!isTransitioning) {
+      const swipeDistance = touchStartX.current - touchEndX.current;
+      const swipeThreshold = 50; // Minimum distance for a swipe to be considered
+
+      if (swipeDistance > swipeThreshold) {
+        // Swipe left - Next slide
+        nextSlide();
+      } else if (swipeDistance < -swipeThreshold) {
+        // Swipe right - Previous slide
+        prevSlide();
+      }
+    }
+  };
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsTransitioning(false);
@@ -61,8 +86,14 @@ export default function ScrollableSection() {
         <h2 className="text-4xl font-bold text-black mb-8 text-center">News & Events</h2>
         <p className="text-black text-center mb-12">Find out the latest information. Browse company news, industry updates, and more.</p>
         
-        <div className="relative overflow-hidden">
+        <div 
+          className="relative overflow-hidden"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <div className="flex items-center">
+            {/* Left Arrow */}
             <button 
               onClick={prevSlide}
               className="sm:block hidden left-0 z-10 p-6 bg-white"
@@ -110,6 +141,7 @@ export default function ScrollableSection() {
               </div>
             </div>
             
+            {/* Right Arrow */}
             <button 
               onClick={nextSlide}
               className="sm:block hidden right-0 z-10 p-6 bg-white"
@@ -119,6 +151,7 @@ export default function ScrollableSection() {
             </button>
           </div>
           
+          {/* Pagination Dots */}
           <div className="flex justify-center mt-6 space-x-2">
             {newsItems.map((_, index) => (
               <button

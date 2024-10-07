@@ -70,7 +70,7 @@ export default function Navbar() {
           </div>
 
           {/* Navigation Links for Desktop */}
-          <ul className="hidden md:flex space-x-8 text-black font-bold">
+          <ul className="hidden md:flex space-x-8 text-black font-semibold">
             {navItems.map((item) => (
               <li
                 key={item.href}
