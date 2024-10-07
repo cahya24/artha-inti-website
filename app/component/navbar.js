@@ -36,16 +36,22 @@ export default function Navbar() {
       name: "Services",
       href: "/services",
       subItems: [
-        { name: "Sub-Service 1", href: "/services/sub1" },
-        { name: "Sub-Service 2", href: "/services/sub2" }
+        { name: "RO Membrane Cleaning", href: "/services/services1" },
+        { name: "RO Treatment", href: "/services/services2" },
+        { name: "Cooling Water Tower Treatment", href: "/services/services3" },
+        { name: "Chiller Water Treatment", href: "/services/services4" },
+        { name: "Boiler Water Treatment", href: "/services/services5" },
       ]
     },
     {
       name: "Project References",
       href: "/projectreferences",
       subItems: [
-        { name: "Reference 1", href: "/references/sub1" },
-        { name: "Reference 2", href: "/references/sub2" }
+        { name: "PT Berlico Mulia Farma", href: "/projectreferences/project1" },
+        { name: "Reverse Osmosis", href: "/references/project2" },
+        { name: "PT Bintang Toedjoe", href: "/references/project3" },
+        { name: "PT Dankos Farma Tbk", href: "/references/project4" },
+        { name: "Reverse Osmosis", href: "/references/project5" },
       ]
     },
     { 
@@ -135,7 +141,7 @@ export default function Navbar() {
                     onMouseLeave={() => setHoveredItem(null)}
                   >
                     {item.subItems.map((subItem) => (
-                      <li key={subItem.href} className="py-4 px-6 hover:text-primary hover:bg-gray-200">
+                      <li key={subItem.href} className="py-4 px-6 hover:text-primary hover:rounded-lg hover:bg-gray-100">
                         <Link href={subItem.href}>{subItem.name}</Link>
                       </li>
                     ))}
