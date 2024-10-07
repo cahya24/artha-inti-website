@@ -22,7 +22,7 @@ export default function SupportedBrand() {
               <img
                 src="Brand-Alfa-Laval.jpg"
                 alt="Alfa Laval"
-                className="h-18 w-auto object-contain"
+                className="h-16 w-auto object-contain"
               />
             </div>
             <div className="flex items-center justify-center bg-white p-4 rounded-lg">

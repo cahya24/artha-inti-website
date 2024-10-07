@@ -82,7 +82,7 @@ export default function ProjectReference() {
             hoverPosition === "left" ? "opacity-100" : "opacity-0"
           }`}
         >
-          <div className="bg-secondary p-3 rounded-full border-solid border-4 border-primary shadow-md flex justify-center items-center">
+          <div className="bg-secondary p-3 ml-10 rounded-full border-solid border-4 border-primary shadow-md flex justify-center items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -130,7 +130,7 @@ export default function ProjectReference() {
             hoverPosition === "right" ? "opacity-100" : "opacity-0"
           }`}
         >
-          <div className="bg-secondary p-3 rounded-full border-solid border-4 border-primary shadow-md flex justify-center items-center">
+          <div className="bg-secondary p-3 mr-10 rounded-full border-solid border-4 border-primary shadow-md flex justify-center items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
