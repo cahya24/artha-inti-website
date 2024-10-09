@@ -18,10 +18,12 @@ export default function HomePage() {
     <div>
       <SidescrollerMenu />
       <ContentBoxSection />
+      <div id="project-reference"></div>
       <SeparatorTopLeft />
       <ProjectReference />
       <SeparatorBotRight />
       <ScrollableSection />
+      <div id="supported-brand"></div>
       <SeparatorTopRight />
       <SupportedBrand />
       <SeparatorBotLeft />

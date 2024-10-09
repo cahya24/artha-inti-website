@@ -45,7 +45,7 @@ export default function Navbar() {
     },
     {
       name: "Project References",
-      href: "/projectreferences",
+      href: "/#project-reference",
       subItems: [
         { name: "PT Berlico Mulia Farma", href: "/projectreferences/ptBerlicoMuliaFarma" },
         { name: "Reverse Osmosis", href: "/references/reverseOsmosis" },
@@ -189,7 +189,7 @@ export default function Navbar() {
                   {item.subItems && activeDropdown === item.href && (
                     <ul className="pl-6 mt-2">
                       {item.subItems.map((subItem) => (
-                        <li key={subItem.href} className="py-2">
+                        <li key={subItem.href} className="py-2 border-b">
                           <Link href={subItem.href}>{subItem.name}</Link>
                         </li>
                       ))}

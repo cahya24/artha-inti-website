@@ -1,10 +1,11 @@
 "use client";
 
 import React from 'react';
+import Link from "next/link";
 
 export default function SupportedBrand() {
   return (
-    <div id="supported-brand" className="relative bg-primary py-16"> {/* Adjusted background and padding */}    
+    <div className="relative bg-primary py-16"> {/* Adjusted background and padding */}    
       <div className="min-h-fit bg-primary flex items-center justify-center p-6 relative z-10"> {/* Ensure content appears above the sliced-off effect */}
         <div className="max-w-5xl w-full">
           {/* Headline Title */}
@@ -19,60 +20,76 @@ export default function SupportedBrand() {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 items-center">
             {/* Adjust sizes for different logos */}
             <div className="flex items-center justify-center bg-white p-4 rounded-lg">
-              <img
-                src="Brand-Alfa-Laval.jpg"
-                alt="Alfa Laval"
-                className="h-16 w-auto object-contain"
-              />
+              <Link href='/supportedbrand/alfalaval.js'>
+                <img
+                  src="Brand-Alfa-Laval.jpg"
+                  alt="Alfa Laval"
+                  className="h-16 w-auto object-contain"
+                />
+              </Link>
             </div>
             <div className="flex items-center justify-center bg-white p-4 rounded-lg">
-              <img
-                src="Brand-Aquafine.jpg"
-                alt="Aquafine"
-                className="h-16 w-auto object-contain"
-              />
+              <Link href='/supportedbrand/aquafine.js'>
+                <img
+                  src="Brand-Aquafine.jpg"
+                  alt="Aquafine"
+                  className="h-16 w-auto object-contain"
+                />
+              </Link>
             </div>
             <div className="flex items-center justify-center bg-white p-4 rounded-lg">
-              <img
-                src="Brand-Calgon.jpg"
-                alt="Calgon"
-                className="h-16 w-auto object-contain"
-              />
+              <Link href='/supportedbrand'>
+                <img
+                  src="Brand-Calgon.jpg"
+                  alt="Calgon"
+                  className="h-16 w-auto object-contain"
+                />
+              </Link>
             </div>
             <div className="flex items-center justify-center bg-white p-4 rounded-lg">
-              <img
-                src="Brand-ecellGE3.jpg"
-                alt="ecellGE3"
-                className="h-16 w-auto object-contain"
-              />
+              <Link href='/supportedbrand/ecell.js'>
+                <img
+                  src="Brand-ecellGE3.jpg"
+                  alt="ecellGE3"
+                  className="h-16 w-auto object-contain"
+                />
+              </Link>
             </div>
             <div className="flex items-center justify-center bg-white p-4 rounded-lg">
-              <img
-                src="Brand-gemu.jpg"
-                alt="gemu"
-                className="h-16 w-auto object-contain"
-              />
+              <Link href='/supportedbrand/gemu.js'>
+                <img
+                  src="Brand-gemu.jpg"
+                  alt="gemu"
+                  className="h-16 w-auto object-contain"
+                />
+              </Link>
             </div>
             <div className="flex items-center justify-center bg-white p-4 rounded-lg">
-              <img
-                src="Brand-ionpure.jpg"
-                alt="ionpure"
-                className="h-16 w-auto object-contain"
-              />
+              <Link href='/supportedbrand/ionpure.js'>
+                <img
+                  src="Brand-ionpure.jpg"
+                  alt="ionpure"
+                  className="h-16 w-auto object-contain"
+                />
+              </Link>
             </div>
             <div className="flex items-center justify-center bg-white p-4 rounded-lg">
-              <img
-                src="Brand-Overton.jpg"
-                alt="Overton"
-                className="h-16 w-auto object-contain"
-              />
+              <Link href='/supportedbrand'>
+                <img
+                  src="Brand-Overton.jpg"
+                  alt="Overton"
+                  className="h-16 w-auto object-contain"
+                />
+              </Link>
             </div>
             <div className="flex items-center justify-center bg-white p-4 rounded-lg">
-              <img
-                src="Brand-ozonia.jpg"
-                alt="ozonia"
-                className="h-16 w-auto object-contain"
-              />
+              <Link href='/supportedbrand/ozonia.js'>
+                <img
+                  src="Brand-ozonia.jpg"
+                  alt="ozonia"
+                  className="h-16 w-auto object-contain"
+                />
+              </Link>
             </div>
           </div>
         </div>
